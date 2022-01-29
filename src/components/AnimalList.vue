@@ -1,38 +1,38 @@
 <template>
   <div>
     <div class="form-group">
-      <label> Nombre</label>
-      <input type="text" class="form-control" v-model="filterField"/>
+      <input type="text" class="form-control" v-model="filterField" placeholder="Filter by firts name"/>
     </div>
     <table class="table caption-top">
       <caption>
-        List of users
+       <h1>  Pets List </h1>
       </caption>
       <thead>
         <tr>
-          <th scope="col">#</th>
-          <th scope="col">First</th>
-          <th scope="col">Last</th>
+          <th scope="col">Id</th>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
           <th scope="col">Type</th>
           <th scope="col">Actions</th>
         </tr>
       </thead>
       <tbody >
-        <tr id="array-with-index" v-for="(animal, index ) in filteredList" :key="animal.name"  >
-          <th scope="row" >{{index}}</th>
+        <tr id="array-with-index" v-for=" animal in filteredList " :key="animal.id"  >
+          <th scope="row" >{{animal.id}}</th>
           <td>{{ animal.name }}</td>
           <td>{{ animal.lastname }}</td>
           <td>{{ animal.type }}</td>
-          <td><button type="button" class="btn btn-primary" @click="goToAnimal(animal.id)">Editar</button></td>
+          <td><button type="button" class="btn btn-primary" @click="goToAnimal(animal.id)">Update</button></td>
 
         </tr>
       </tbody>
     </table>
-    <button class="btn btn-primary">Bootstrap collapse</button>
+
   </div>
 </template>
 
 <script>
+import { mapState} from 'vuex'
 export default {
   name: "List",
   props: {
@@ -40,64 +40,7 @@ export default {
   },
   data() {
     return {
-      animals: [
-        {
-          id: 1,
-          name: "Pocha ",
-          lastname: "Rodriguez ",
-          type: "Cat",
-          age: 0,
-          rh: "0+",
-        },
-        {
-          id: 2,
-          name: "Chiqui ",
-          lastname: "Rodriguez ",
-          type: "Dot",
-          age: 0,
-          rh: "0+",
-        },
-        {
-          id: 3,
-          name: "Pancho ",
-          lastname: "Rodriguez ",
-          type: "Hourse",
-          age: 0,
-          rh: "0+",
-        },
-        {
-          id: 4,
-          name: "Negro ",
-          lastname: "Rodriguez ",
-          type: "Cat",
-          age: 0,
-          rh: "0+",
-        },
-        {
-          id: 5,
-          name: "Pepe ",
-          lastname: "Rodriguez ",
-          type: "Dot",
-          age: 0,
-          rh: "0+",
-        },
-        {
-          id: 6,
-          name: "Akira ",
-          lastname: "Rodriguez ",
-          type: "Hourse",
-          age: 0,
-          rh: "0+",
-        },
-        {
-          id: 7,
-          name: "Gatis ",
-          lastname: "Rodriguez ",
-          type: "Hourse",
-          age: 0,
-          rh: "0+",
-        },
-      ],
+      
       filterField: "",
     };
   },
@@ -109,6 +52,9 @@ export default {
           .includes(this.filterField.toLowerCase());
       });
     },
+
+    ...mapState(['animals'])
+  
   },
   methods: {
 
