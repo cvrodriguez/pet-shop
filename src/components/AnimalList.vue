@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <div>
     <div class="form-group">
       <label> Nombre</label>
       <input type="text" class="form-control" v-model="filterField"/>
@@ -13,15 +13,18 @@
           <th scope="col">#</th>
           <th scope="col">First</th>
           <th scope="col">Last</th>
-          <th scope="col">Handle</th>
+          <th scope="col">Type</th>
+          <th scope="col">Actions</th>
         </tr>
       </thead>
       <tbody >
-        <tr v-for="animal in filteredList" :key="animal.name"  >
-          <th scope="row" ></th>
+        <tr id="array-with-index" v-for="(animal, index ) in filteredList" :key="animal.name"  >
+          <th scope="row" >{{index}}</th>
           <td>{{ animal.name }}</td>
           <td>{{ animal.lastname }}</td>
           <td>{{ animal.type }}</td>
+          <td><button type="button" class="btn btn-primary" @click="goToAnimal(animal.id)">Editar</button></td>
+
         </tr>
       </tbody>
     </table>
@@ -31,7 +34,7 @@
 
 <script>
 export default {
-  name: "HelloWorld",
+  name: "List",
   props: {
     msg: String,
   },
@@ -39,6 +42,7 @@ export default {
     return {
       animals: [
         {
+          id: 1,
           name: "Pocha ",
           lastname: "Rodriguez ",
           type: "Cat",
@@ -46,6 +50,7 @@ export default {
           rh: "0+",
         },
         {
+          id: 2,
           name: "Chiqui ",
           lastname: "Rodriguez ",
           type: "Dot",
@@ -53,6 +58,7 @@ export default {
           rh: "0+",
         },
         {
+          id: 3,
           name: "Pancho ",
           lastname: "Rodriguez ",
           type: "Hourse",
@@ -60,6 +66,7 @@ export default {
           rh: "0+",
         },
         {
+          id: 4,
           name: "Negro ",
           lastname: "Rodriguez ",
           type: "Cat",
@@ -67,6 +74,7 @@ export default {
           rh: "0+",
         },
         {
+          id: 5,
           name: "Pepe ",
           lastname: "Rodriguez ",
           type: "Dot",
@@ -74,6 +82,7 @@ export default {
           rh: "0+",
         },
         {
+          id: 6,
           name: "Akira ",
           lastname: "Rodriguez ",
           type: "Hourse",
@@ -81,6 +90,7 @@ export default {
           rh: "0+",
         },
         {
+          id: 7,
           name: "Gatis ",
           lastname: "Rodriguez ",
           type: "Hourse",
@@ -88,34 +98,29 @@ export default {
           rh: "0+",
         },
       ],
-      filterField: ''
+      filterField: "",
     };
   },
-   computed: {
+  computed: {
     filteredList() {
-      return this.animals.filter(animal => {
-        return animal.name.toLowerCase().includes(this.filterField.toLowerCase())
-      })
+      return this.animals.filter((animal) => {
+        return animal.name
+          .toLowerCase()
+          .includes(this.filterField.toLowerCase());
+      });
+    },
+  },
+  methods: {
+
+    goToAnimal (id) {
+      
+      this.$router.push({ name: 'AnimalDetail', params: { id } })
     }
   }
-
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
+
 </style>
