@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="columns"> 
     <div class="form-group">
       <input type="text" class="form-control" v-model="filterField" placeholder="Filter by firts name"/>
     </div>
@@ -59,7 +59,6 @@ export default {
   methods: {
 
     goToAnimal (id) {
-      
       this.$router.push({ name: 'AnimalDetail', params: { id } })
     }
   }
@@ -68,5 +67,12 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.columns{
+  margin: 10%;
+}
+.form-control{
+  width: 50%;
+  float: right;
+}
 
 </style>
