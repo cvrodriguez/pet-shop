@@ -1,11 +1,16 @@
 <template>
-  <div class="columns"> 
+  <div class="columns">
     <div class="form-group">
-      <input type="text" class="form-control" v-model="filterField" placeholder="Filter by firts name"/>
+      <input
+        type="text"
+        class="form-control"
+        v-model="filterField"
+        placeholder="Filter by firts name"
+      />
     </div>
     <table class="table caption-top">
       <caption>
-       <h1>  Pets List </h1>
+        <h1>Pets List</h1>
       </caption>
       <thead>
         <tr>
@@ -16,23 +21,40 @@
           <th scope="col">Actions</th>
         </tr>
       </thead>
-      <tbody >
-        <tr id="array-with-index" v-for=" animal in filteredList " :key="animal.id"  >
-          <th scope="row" >{{animal.id}}</th>
+      <tbody>
+        <tr
+          id="array-with-index"
+          v-for="animal in filteredList"
+          :key="animal.id"
+        >
+          <th scope="row">{{ animal.id }}</th>
           <td>{{ animal.name }}</td>
           <td>{{ animal.lastname }}</td>
           <td>{{ animal.type }}</td>
-          <td><button type="button" class="btn btn-primary" @click="goToAnimal(animal.id)">Update</button></td>
-
+          <td>
+            <button
+              type="button"
+              class="btn btn-primary"
+              @click="goToAnimal(animal.id)"
+            >
+              Update
+            </button>
+          </td>
         </tr>
       </tbody>
     </table>
-
+    <button
+      type="button"
+      class="btn btn-primary"
+      @click="goToAnimalCreate()"
+    >
+      Create new Animal
+    </button>
   </div>
 </template>
 
 <script>
-import { mapState} from 'vuex'
+import { mapState } from "vuex";
 export default {
   name: "List",
   props: {
@@ -57,22 +79,23 @@ export default {
   
   },
   methods: {
-
-    goToAnimal (id) {
-      this.$router.push({ name: 'AnimalDetail', params: { id } })
-    }
-  }
+    goToAnimal(id) {
+      this.$router.push({ name: 'AnimalDetail', params: { id } });
+    },
+      goToAnimalCreate() {
+      this.$router.push({ name: "AnimalCreate"});
+    },
+  },
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.columns{
+.columns {
   margin: 10%;
 }
-.form-control{
+.form-control {
   width: 50%;
   float: right;
 }
-
 </style>
