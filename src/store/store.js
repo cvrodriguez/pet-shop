@@ -1,3 +1,4 @@
+
 import { createStore } from 'vuex'
 
 export const store = createStore({
@@ -75,14 +76,43 @@ export const store = createStore({
     ADD_ANIMAL(state, animal){
       animal.id = state.animals.length 
       state.animals.push(animal)
-     
-     
+    },
+
+    UPDATE_ANIMAL(state , animalesP){
+      state.animals = animalesP
+
+    },
+    DELETE_ANIMAL(state, index){
+      state.animals.splice(index, 1)
     }
   },
   actions:{
+
     Add_Animal({commit}, animal){
       commit("ADD_ANIMAL", animal)
       console.log(animal)
+    },
+
+    Update_Animal({commit, state}, { animal, id}){
+      const animalesCopy = [...state.animals];
+      const i = animalesCopy.findIndex((animal) =>{
+        if( animal.id == id){
+          return true
+        }
+      })
+      animalesCopy[i] = animal
+      commit("UPDATE_ANIMAL", animalesCopy)
+    },
+
+    delete_animal({commit, state}, {id}){
+
+       const index = state.animals.findIndex((animal) =>{
+         if( animal.id == id)
+        return true
+        console.log(index, "se supone soy index")
+      })
+      
+      commit("DELETE_ANIMAL", index)
     }
 
   

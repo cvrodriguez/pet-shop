@@ -32,29 +32,34 @@
           <td>{{ animal.lastname }}</td>
           <td>{{ animal.type }}</td>
           <td>
-            <button
-              type="button"
-              class="btn btn-primary"
-              @click="goToAnimal(animal.id)"
-            >
-              Update
-            </button>
+            <div class="btn-group">
+              <button
+                type="button"
+                class="btn btn-primary"
+                @click="goToAnimal(animal.id)"
+              >
+                Update
+              </button>
+              <button
+                type="button"
+                class="btn btn-primary"
+                @click="goTodeleteAnimal(animal)"
+              >
+                Delete
+              </button>
+            </div>
           </td>
         </tr>
       </tbody>
     </table>
-    <button
-      type="button"
-      class="btn btn-primary"
-      @click="goToAnimalCreate()"
-    >
+    <button type="button" class="btn btn-primary" @click="goToAnimalCreate()">
       Create new Animal
     </button>
   </div>
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapActions, mapState } from "vuex";
 export default {
   name: "List",
   props: {
@@ -62,7 +67,6 @@ export default {
   },
   data() {
     return {
-      
       filterField: "",
     };
   },
@@ -75,16 +79,23 @@ export default {
       });
     },
 
-    ...mapState(['animals'])
-  
+    ...mapState(["animals"]),
+    
   },
   methods: {
+    ...mapActions(["delete_animal"]),
     goToAnimal(id) {
-      this.$router.push({ name: 'AnimalDetail', params: { id } });
+      this.$router.push({ name: "AnimalDetail", params: { id } });
     },
-      goToAnimalCreate() {
-      this.$router.push({ name: "AnimalCreate"});
+    goToAnimalCreate() {
+      this.$router.push({ name: "AnimalCreate" });
     },
+    goTodeleteAnimal(index){
+      this.delete_animal(index)
+       this.$router.push({ name: "AnimalList" });
+    
+
+    }
   },
 };
 </script>
@@ -97,5 +108,10 @@ export default {
 .form-control {
   width: 50%;
   float: right;
+}
+.btn-primary{
+ 
+  margin-inline: 10%;
+  
 }
 </style>

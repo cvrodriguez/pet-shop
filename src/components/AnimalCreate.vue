@@ -43,6 +43,7 @@ import { mapState, mapActions } from "vuex";
 export default {
   data() {
     return {
+
       animal: {
         id: "",
         name: " ",
@@ -59,6 +60,7 @@ export default {
     ...mapActions(["Add_Animal"]),
     AddAnimal() {
       const { animal } = this;
+      // const aninal = this.animal
       this.Add_Animal(animal); 
       this.$router.push({ name: "AnimalList" })
     },
