@@ -22,11 +22,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr
-          id="array-with-index"
-          v-for="animal in filteredList"
-          :key="animal.id"
-        >
+        <tr v-for="animal in filteredList" :key="animal.id">
           <th scope="row">{{ animal.id }}</th>
           <td>{{ animal.name }}</td>
           <td>{{ animal.lastname }}</td>
@@ -80,7 +76,6 @@ export default {
     },
 
     ...mapState(["animals"]),
-    
   },
   methods: {
     ...mapActions(["delete_animal"]),
@@ -90,12 +85,10 @@ export default {
     goToAnimalCreate() {
       this.$router.push({ name: "AnimalCreate" });
     },
-    goTodeleteAnimal(index){
-      this.delete_animal(index)
-       this.$router.push({ name: "AnimalList" });
-    
-
-    }
+    goTodeleteAnimal(index) {
+      this.delete_animal(index);
+      this.$router.push({ name: "AnimalList" });
+    },
   },
 };
 </script>
@@ -109,9 +102,7 @@ export default {
   width: 50%;
   float: right;
 }
-.btn-primary{
- 
+.btn-primary {
   margin-inline: 10%;
-  
 }
 </style>
