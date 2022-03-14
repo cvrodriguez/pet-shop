@@ -3,8 +3,8 @@ import { createStore } from 'vuex'
 
 export const store = createStore({
   state() {
-   return {
-    animals: [{
+    return {
+      animals: [{
         id: 1,
         name: "Pocha ",
         lastname: "Rodriguez ",
@@ -68,35 +68,59 @@ export const store = createStore({
         age: 16,
         rh: "0+",
         imag: "https://us.123rf.com/450wm/sanne198/sanne1982002/sanne198200200032/141164447-retrato-de-un-bonito-pony-casta%C3%B1o-delante-de-una-pared-blanca-tiene-heno-en-la-boca-.jpg?ver=6"
-      }],  
+      }],
+      products: [{
+        code: "AP-01",
+        name: "Collar",
+        price: 23.000,
+        unit: 5,
+        size: "mediano",
+        color: "negro"
+      },
+      {
+        code: "AP-02",
+        name: "Camisa",
+        price: 28.000,
+        unit: 15,
+        size: "pequeño",
+        color: "blanco"
+      },
+      {code: "AP-02",
+      name: "Camisa",
+      price: 28.000,
+      unit: 15,
+      size: "pequeño",
+      color: "blanco"
+    }]
+
     }
 
   },
-  mutations:{
-    ADD_ANIMAL(state, animal){
-      animal.id = state.animals.length 
+  mutations: {
+    ADD_ANIMAL(state, animal) {
+      animal.id = state.animals.length
       state.animals.push(animal)
     },
 
-    UPDATE_ANIMAL(state , animalesP){
+    UPDATE_ANIMAL(state, animalesP) {
       state.animals = animalesP
 
     },
-    DELETE_ANIMAL(state, index){
+    DELETE_ANIMAL(state, index) {
       state.animals.splice(index, 1)
     }
   },
-  actions:{
+  actions: {
 
-    Add_Animal({commit}, animal){
+    Add_Animal({ commit }, animal) {
       commit("ADD_ANIMAL", animal)
       console.log(animal)
     },
 
-    Update_Animal({commit, state}, { animal, id}){
+    Update_Animal({ commit, state }, { animal, id }) {
       const animalesCopy = [...state.animals];
-      const i = animalesCopy.findIndex((animal) =>{
-        if( animal.id == id){
+      const i = animalesCopy.findIndex((animal) => {
+        if (animal.id == id) {
           return true
         }
       })
@@ -104,17 +128,17 @@ export const store = createStore({
       commit("UPDATE_ANIMAL", animalesCopy)
     },
 
-    delete_animal({commit, state}, {id}){
+    delete_animal({ commit, state }, { id }) {
 
-       const index = state.animals.findIndex((animal) =>{
-         if( animal.id == id)
-        return true
+      const index = state.animals.findIndex((animal) => {
+        if (animal.id == id)
+          return true
         console.log(index, "se supone soy index")
       })
-      
+
       commit("DELETE_ANIMAL", index)
     }
 
-  
-}
+
+  }
 })

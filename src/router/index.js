@@ -4,6 +4,7 @@ import About from "@/views/About.vue";
 import AnimalList from "@/components/AnimalList"
 import AnimalDetail from "@/components/AnimalDetail"
 import AnimalCreate from "@/components/AnimalCreate"
+import ProductList from "@/components/ProductList"
 
 const routes = [
     {
@@ -15,6 +16,11 @@ const routes = [
         path: '/AnimalDetail/:id',
         name: 'AnimalDetail',
         component: AnimalDetail
+    },
+    {
+        path: '/ProductList',
+        name: 'ProductList',
+        component: ProductList
     },
     {
         path: '/AnimalCreate',
