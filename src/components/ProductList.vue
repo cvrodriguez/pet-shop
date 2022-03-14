@@ -1,17 +1,25 @@
 <template >
   <div class=" columns">
+      <div class="form-group">
+      <input
+        type="text"
+        class="form-control"
+        v-model="filterField"
+        placeholder="Filter by name"
+      />
+    </div>
     <table class="table caption-top">
         <caption>
         <h1>Poducts List</h1>
       </caption>
       <thead class="table-light">
-        <th scope="col">CODIGO</th>
-        <th scope="col">NOMBRE</th>
-        <th scope="col">PRICE</th>
-        <th scope="col">SIZE</th>
+        <th scope="col">Code</th>
+        <th scope="col">Name</th>
+        <th scope="col">Price</th>
+        <th scope="col">Size</th>
       </thead>
       <tbody>
-        <tr v-for="product in products" :key="product.code">
+        <tr v-for="product in filteredList" :key="product.code">
         
           <td> {{product.code}}</td>
           <td> {{product.name}}</td>
@@ -26,8 +34,23 @@
 <script>
 import {mapState} from "vuex"
 export default {
+  data() {
+    return {
+      filterField: ""
+    }
+  },
   computed:{
-    ...mapState(["products"])
+    ...mapState(["products"]),
+
+    filteredList(){
+      return this.products.filter((product)=> {
+        return product.name.toLowerCase()
+        .includes(this.filterField.toLowerCase())
+
+      })
+      
+
+    }
   }
   
 }
