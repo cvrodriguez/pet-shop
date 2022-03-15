@@ -74,23 +74,26 @@ export const store = createStore({
         name: "Collar",
         price: 23.000,
         unit: 5,
-        size: "mediano",
-        color: "negro"
+        size: "Medio",
+        color: "Blue",
+        typeOfAnimal: "Cow"
       },
       {
         code: "AP-02",
         name: "Camisa",
         price: 28.000,
         unit: 15,
-        size: "pequeño",
-        color: "blanco"
+        size: "Big",
+        color: "Black",
+        typeOfAnimal: "Cat"
       },
       {code: "AP-02",
       name: "Camisa",
       price: 28.000,
       unit: 15,
-      size: "pequeño",
-      color: "blanco"
+      size: "Small",
+      color: "White",
+      typeOfAnimal: "Dog"
     }]
 
     }
@@ -108,13 +111,15 @@ export const store = createStore({
     },
     DELETE_ANIMAL(state, index) {
       state.animals.splice(index, 1)
+    },
+    ADD_PRODUCT(state, product){
+      state.products.push(product)
     }
   },
   actions: {
 
     Add_Animal({ commit }, animal) {
       commit("ADD_ANIMAL", animal)
-      console.log(animal)
     },
 
     Update_Animal({ commit, state }, { animal, id }) {
@@ -137,6 +142,9 @@ export const store = createStore({
       })
 
       commit("DELETE_ANIMAL", index)
+    },
+    Add_Product({commit}, product){
+      commit("ADD_PRODUCT", product)
     }
 
 
