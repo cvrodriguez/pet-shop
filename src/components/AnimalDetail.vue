@@ -60,7 +60,7 @@ export default {
     UpdateAnimal() {
       const id = this.filterById.id;
       const animal = this.filterById;
-      console.log(animal, " update animal")
+      console.log(animal, "update animal")
 
       this.Update_Animal({id, animal})
       this.$router.push({ name: "AnimalList" })

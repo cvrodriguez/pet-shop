@@ -29,10 +29,13 @@
        </tr>
        </tbody>
     </table>
+     <button type="button" class="btn btn-primary" @click="goToProductCreate()">
+      Create new Product
+    </button>
   </div>
 </template>
 <script>
-import {mapState} from "vuex"
+import { mapState} from "vuex"
 export default {
   data() {
     return {
@@ -51,7 +54,13 @@ export default {
       
 
     }
-  }
+  },
+  methods: {
+    
+    goToProductCreate(){
+      this.$router.push({name: "ProductCreate"})
+    }
+  },
   
 }
 </script>

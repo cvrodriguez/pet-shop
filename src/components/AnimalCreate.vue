@@ -45,13 +45,7 @@ export default {
     return {
 
       animal: {
-        id: "",
-        name: " ",
-        lastname: " ",
-        emailContact: "",
-        type: "",
-        age: 0,
-        rh: "",
+     
       },
     };
   },
