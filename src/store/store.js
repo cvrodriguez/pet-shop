@@ -115,8 +115,11 @@ export const store = createStore({
     ADD_PRODUCT(state, product) {
       state.products.push(product)
     },
-    UPDATE_PRODUCT(state, product){
-      state.products =product
+    UPDATE_PRODUCT(state, products){
+      state.products =products
+    },
+    DELETE_PRODUCT( state, index){
+      state.products.splice(index)
     }
   },
   actions: {
@@ -161,6 +164,16 @@ export const store = createStore({
        });
        UpdateProducts[i] = productu
        commit("UPDATE_PRODUCT", UpdateProducts)
+
+    },
+    Product_Delete({commit}, {code}){
+    
+      const i = this.state.products.findIndex((product)=>{
+        if(product.code == code){
+          return true
+        }
+      })
+      commit("DELETE_PRODUCT", i)
 
     }
 
