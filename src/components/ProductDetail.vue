@@ -55,14 +55,13 @@ export default {
     this.product = {...productoByI} 
   },
   methods: {
-    ...mapActions["Update_Product"],
+    ...mapActions(["Update_Product"]),
 
     updateProduct() {
-      const id = this.$route.params.code;
+     
       const productu = this.product;
       console.log("si entro aqui", productu);
-      console.log("si entro aqui", id);
-      this.Update_Product({ id, productu });
+      this.Update_Product({ productu });
       this.$router.push({ name: "ProductList" });
     },
   },

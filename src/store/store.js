@@ -151,11 +151,11 @@ export const store = createStore({
     },
 
     Update_Product({commit }, {productu}){
-      console.log(productu.id, " console of action")
+      console.log(productu.code, " console of action")
       console.log(productu)
        const UpdateProducts = [...this.state.products];
        const i = UpdateProducts.findIndex((product)=>{
-         if(product.code == productu.id){
+         if(product.code == productu.code){
            return true
          }
        });
