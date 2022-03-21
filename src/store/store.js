@@ -87,15 +87,15 @@ export const store = createStore({
         color: "Black",
         typeOfAnimal: "Cat"
       },
-      {code: "AP-02",
-      name: "Camisa",
-      price: 28.000,
-      unit: 15,
-      size: "Small",
-      color: "White",
-      typeOfAnimal: "Dog"
-    }]
-
+      {
+        code: "AP-02",
+        name: "Camisa",
+        price: 28.000,
+        unit: 15,
+        size: "Small",
+        color: "White",
+        typeOfAnimal: "Dog"
+      }]
     }
 
   },
@@ -112,8 +112,11 @@ export const store = createStore({
     DELETE_ANIMAL(state, index) {
       state.animals.splice(index, 1)
     },
-    ADD_PRODUCT(state, product){
+    ADD_PRODUCT(state, product) {
       state.products.push(product)
+    },
+    UPDATE_PRODUCT(state, product){
+      state.products =product
     }
   },
   actions: {
@@ -122,10 +125,10 @@ export const store = createStore({
       commit("ADD_ANIMAL", animal)
     },
 
-    Update_Animal({ commit, state }, { animal, id }) {
+    Update_Animal({ commit, state }, { animal }) {
       const animalesCopy = [...state.animals];
-      const i = animalesCopy.findIndex((animal) => {
-        if (animal.id == id) {
+      const i = animalesCopy.findIndex((animalC) => {
+        if (animalC.id == animal.id) {
           return true
         }
       })
@@ -143,8 +146,22 @@ export const store = createStore({
 
       commit("DELETE_ANIMAL", index)
     },
-    Add_Product({commit}, product){
+    Add_Product({ commit }, product) {
       commit("ADD_PRODUCT", product)
+    },
+
+    Update_Product({commit }, {productu}){
+      console.log(productu.id, " console of action")
+      console.log(productu)
+       const UpdateProducts = [...this.state.products];
+       const i = UpdateProducts.findIndex((product)=>{
+         if(product.code == productu.id){
+           return true
+         }
+       });
+       UpdateProducts[i] = productu
+       commit("UPDATE_PRODUCT", UpdateProducts)
+
     }
 
 

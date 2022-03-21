@@ -6,6 +6,7 @@ import AnimalDetail from "@/components/AnimalDetail"
 import AnimalCreate from "@/components/AnimalCreate"
 import ProductList from "@/components/ProductList"
 import ProductCreate from "@/components/ProductCreate"
+import ProductDetail from "@/components/ProductDetail"
 
 const routes = [
     {
@@ -32,6 +33,11 @@ const routes = [
         path: '/ProductCreate',
         name: 'ProductCreate',
         component: ProductCreate
+    },
+    {
+        path: '/ProductDetail/:code',
+        name: 'ProductDetail',
+        component: ProductDetail
     },
     {
         path: "/Home",

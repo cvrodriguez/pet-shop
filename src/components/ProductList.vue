@@ -25,7 +25,8 @@
           <td> {{product.name}}</td>
           <td> {{product.price}}</td>
           <td> {{product.size}}</td>
-          <td> </td>
+          <td> <button type="button" class="btn btn-primary" @click="goToProductUpdate(product.code)">Update</button></td>
+          <td></td>
        </tr>
        </tbody>
     </table>
@@ -57,8 +58,12 @@ export default {
   },
   methods: {
     
-    goToProductCreate(){
+    goToProductCreate(){  
       this.$router.push({name: "ProductCreate"})
+    },
+    goToProductUpdate(code){
+      this.$router.push({name: "ProductDetail", params:{code} })
+      
     }
   },
   
