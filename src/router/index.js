@@ -8,6 +8,7 @@ import ProductList from "@/components/ProductList"
 import ProductCreate from "@/components/ProductCreate"
 import ProductDetail from "@/components/ProductDetail"
 
+
 const routes = [
     {
         path: "/",
@@ -39,6 +40,7 @@ const routes = [
         name: 'ProductDetail',
         component: ProductDetail
     },
+    
     {
         path: "/Home",
         name: "Home",
