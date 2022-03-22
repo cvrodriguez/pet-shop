@@ -95,6 +95,42 @@ export const store = createStore({
         size: "Small",
         color: "White",
         typeOfAnimal: "Dog"
+      }],
+      employees: [{
+        name: "Viviana",
+        lastname: "Rodriguez",
+        Id : 1144025825,
+        mail: "cinvir15@gmail.com",
+        bankAcount: "ABN-29954442",
+        position: "Clenner",
+        phoneNumber: 344454546
+      },
+      {
+        name: "Cristina",
+        lastname: "Rodriguez",
+        Id : 315957583,
+        mail: "isabelcristinarodriguez@gmail.com",
+        bankAcount: "ABN-645676743",
+        position: "Manager",
+        phoneNumber: 344454546
+      },
+      {
+        name: "Isabel",
+        lastname: "Gomez",
+        Id : 31942335,
+        mail: "isrogo0815@gmail.com",
+        bankAcount: "ABN-54893950",
+        position: "Seller",
+        phoneNumber: 344454546
+      },
+      {
+        name: "Pablo",
+        lastname: "Bastidas",
+        Id : 1144025825,
+        mail: "pablobastidasv@gmail.com",
+        bankAcount: "ABN-45879585678",
+        position: "Veterinary",
+        phoneNumber: 344454546
       }]
     }
 
